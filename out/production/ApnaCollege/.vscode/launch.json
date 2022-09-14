@@ -1,0 +1,192 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+
+
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinarySearch",
+            "request": "launch",
+            "mainClass": "Practice.BinarySearch",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch HashTableImplimentation",
+            "request": "launch",
+            "mainClass": "Practice.HashTableImplimentation",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinearSearch",
+            "request": "launch",
+            "mainClass": "Practice.LinearSearch",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch LinkListtt",
+            "request": "launch",
+            "mainClass": "Practice.LinkedList.LinkListtt",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch MergeSort",
+            "request": "launch",
+            "mainClass": "Practice.MergeSort",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Practice_02",
+            "request": "launch",
+            "mainClass": "Practice.Practice_02",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Practice_03",
+            "request": "launch",
+            "mainClass": "Practice.Practice_03",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch QuickSort",
+            "request": "launch",
+            "mainClass": "Practice.QuickSort",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch ROUGH",
+            "request": "launch",
+            "mainClass": "Practice.ROUGH",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch RemoveDuplicateLength",
+            "request": "launch",
+            "mainClass": "Practice.RemoveDuplicateLength",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReverseStringIndiviadualWords",
+            "request": "launch",
+            "mainClass": "Practice.ReverseStringIndiviadualWords",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch RotateArrayByKthPosition",
+            "request": "launch",
+            "mainClass": "Practice.RotateArrayByKthPosition",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch ArrList",
+            "request": "launch",
+            "mainClass": "Practice.STRING.ArrList",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch JAVA",
+            "request": "launch",
+            "mainClass": "Practice.STRING.JAVA",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch nre",
+            "request": "launch",
+            "mainClass": "Practice.STRING.nre",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch SearchingElementInArray",
+            "request": "launch",
+            "mainClass": "Practice.SearchingElementInArray",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Sorting",
+            "request": "launch",
+            "mainClass": "Practice.Sorting",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Weekday_testOne",
+            "request": "launch",
+            "mainClass": "Practice.Weekday_testOne",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch Zoom",
+            "request": "launch",
+            "mainClass": "Practice.Zoom",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch arrayObjective",
+            "request": "launch",
+            "mainClass": "Practice.gfg.arrayObjective",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch javaquick",
+            "request": "launch",
+            "mainClass": "Practice.javaquick",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch newton",
+            "request": "launch",
+            "mainClass": "Practice.newton",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch practiceremdnd",
+            "request": "launch",
+            "mainClass": "Practice.practiceremdnd",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch BubbleSort",
+            "request": "launch",
+            "mainClass": "Practice.sorting.BubbleSort",
+            "projectName": "Apna College_fe40b93b"
+        },
+        {
+            "type": "java",
+            "name": "Launch selectionSort",
+            "request": "launch",
+            "mainClass": "Practice.sorting.selectionSort",
+            "projectName": "Apna College_fe40b93b"
+        }
+    ]
+}
