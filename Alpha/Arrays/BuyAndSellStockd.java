@@ -21,7 +21,6 @@ public class BuyAndSellStockd {
         int n = prices.length;
         int maxprofit = buySellstocks(prices , n);
         System.out.println(maxprofit);
-        //rajat
-
+        //rajat moraniya
     }
 }

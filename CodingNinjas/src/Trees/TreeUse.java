@@ -166,7 +166,7 @@ public class TreeUse {
         if(root==null){
             return;
         }
-        for (int i = 0; i < ; i++) {
+        for (int i = 0; i < root.children.size() ; i++) {
 
         }
         System.out.println(root.children.get(0).data);
