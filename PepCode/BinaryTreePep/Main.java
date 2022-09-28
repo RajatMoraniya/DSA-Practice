@@ -1,8 +1,6 @@
-package Newton.BinaryTreePep;
+package PepCode.BinaryTreePep;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
@@ -221,23 +219,23 @@ public class Main {
 
     }
 
-    static ArrayList<Integer> nodeToRootPath = new ArrayList<>();
+    static ArrayList<Node> nodeToRootPath = new ArrayList<>();
     public static boolean find(Node node, int data){
         if(node == null){
             return false;
         }
         if(node.data==data){
-            nodeToRootPath.add(node.data);
+            nodeToRootPath.add(node);
             return true;
         }
         boolean lc = find(node.left , data);
         if(lc){
-            nodeToRootPath.add(node.data);
+            nodeToRootPath.add(node);
             return true;
         }
         boolean rc = find(node.right, data);
         if(rc){
-            nodeToRootPath.add(node.data);
+            nodeToRootPath.add(node);
             return true;
         }
         return false;
@@ -253,6 +251,181 @@ public class Main {
         printKLevelsDown(node.left, k-1);
         printKLevelsDown(node.right, k-1);
     }
+
+
+    public static void printKLevelsDown2(Node node, int k , Node blocker){
+    if(node == null || k <0 || node == blocker){
+        return;
+    }
+    if(k==0){
+        System.out.println(node.data);
+    }
+    printKLevelsDown2(node.left, k-1,blocker);
+    printKLevelsDown2(node.right, k-1,blocker);
+    }
+
+    public static void printKNodesFar (Node node,int data, int k){
+     nodeToRootPath = new ArrayList<>();
+     find(node,data);
+     for(int i = 0 ; i < nodeToRootPath.size() ; i++){
+         printKLevelsDown2(nodeToRootPath.get(i),k-i,i==0 ? null : nodeToRootPath.get(i-1));
+     }
+    }
+
+    public static void pathToLeafFromRoot(Node node, String path, int sum, int lo, int hi){
+        if(node == null){
+            return;
+        }
+        if(node.left == null && node.right==null){
+            sum+= node.data;
+            if(sum>= lo && sum <= hi) {
+                System.out.println(path + node.data);
+            }
+            return;
+        }
+
+        pathToLeafFromRoot(node.left , path + node.data+" ", sum+node.data , lo , hi);
+        pathToLeafFromRoot(node.right , path + node.data + " ", sum+ node.data , lo , hi);
+    }
+
+    public static Node createLeftCloneTree(Node node){
+        if(node == null){
+            return null;
+        }
+
+        Node lc  = createLeftCloneTree(node.left);
+        Node rc = createLeftCloneTree(node.right);
+
+        Node nn = new Node(node.data);
+        nn.left = lc;
+        node.left = nn;
+        node.right = rc;
+        return node;
+    }
+
+    public static Node transBackFromLeftClonedTree(Node node){
+        if(node == null){
+            return null;
+        }
+        Node ln = transBackFromLeftClonedTree(node.left.left);
+        Node rn = transBackFromLeftClonedTree(node.right);
+
+        node.left = ln;
+        node.right = rn;
+
+        return node;
+    }
+
+    public static void printSingleChildNodes(Node node, Node parent){
+        if(node == null){
+            return;
+        }
+        if(parent!=null){
+            if(parent.left != null && parent.right == null){
+                System.out.println(node.data);
+            }
+            else if(parent.left==null && parent.right != null){
+                System.out.println(node.data);
+            }
+        }
+
+        printSingleChildNodes(node.left , node);
+        printSingleChildNodes(node.right , node);
+    }
+
+    public static Node removeLeaves(Node node){
+        if(node == null){
+            return null;
+        }
+        if(node.left == null && node.right == null){
+            return null;
+        }
+
+        node.left = removeLeaves(node.left);
+        node.right = removeLeaves(node.right);
+
+        return node;
+    }
+
+    public static int diameter1(Node node){
+        if(node==null){
+            return 0;
+        }
+
+        // 1 in Left
+        int ld = diameter1(node.left);
+        //2 in Right
+        int rd = diameter1(node.right);
+
+        int lh = height(node.left);
+        int rh = height(node.right);
+        //3 By Root
+        int th = lh+rh+2;
+
+        return Math.max(th,Math.max(ld,rd));
+    }
+
+
+    public static class DiamHt{
+        int ht;
+        int diam;
+        DiamHt(int diam,int ht){
+            this.diam = diam;
+            this.ht = ht;
+        }
+    }
+
+    public static DiamHt diameterOP(Node node){
+        if(node == null){
+            return new DiamHt(0,-1); // diam 0 , ht = -1;
+        }
+        DiamHt l = diameterOP(node.left);
+        DiamHt r = diameterOP(node.right);
+
+        int myht = Math.max(l.ht,r.ht)+1;
+        int mydiam = Math.max(l.ht+r.ht+2,Math.max(l.diam,r.diam));
+        return new DiamHt(mydiam,myht);
+    }
+
+    static int tilt = 0;
+    public static int tilt(Node node){
+        if(node == null)
+            return 0;
+        int ls = tilt(node.left);
+        int rs = tilt(node.right);
+
+        tilt += Math.abs(ls-rs);
+
+        return ls+rs+node.data;
+    }
+
+    public static class BSTPair{
+        int max;
+        int min;
+        boolean isBST;
+    }
+    public static BSTPair isBST(Node node){
+        if(node == null){
+            BSTPair n = new BSTPair();
+            n.max = Integer.MIN_VALUE;
+            n.min = Integer.MAX_VALUE;
+            n.isBST = true;
+            return n;
+        }
+
+        BSTPair lp = isBST(node.left);
+        BSTPair rp = isBST(node.right);
+
+        BSTPair myPair = new BSTPair();
+
+        myPair.max = Math.max(node.data,Math.max(lp.max, rp.max));
+        myPair.min = Math.min(node.data,Math.min(lp.min, rp.min));
+        myPair.isBST = lp.isBST && rp.isBST && node.data>=lp.max && node.data<=rp.min;
+
+        return myPair;
+    }
+
+
     public static void main (String[]args) throws IOException {
             Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
@@ -301,9 +474,40 @@ public class Main {
 //            IterativePreInPost(root);
 
 //        System.out.println(find(root,70)); //True
-//        System.out.println(nodeToRootPath); //[70, 62, 75, 50]
+//        for(Node node : nodeToRootPath){    //  [70, 62, 75, 50]
+//          System.out.print(node.data + " " );
+//        }
+//        System.out.println();
 
-        printKLevelsDown(root,3);
+//        printKLevelsDown(root,3);
+
+//        printKNodesFar(root,37,2);
+
+//        pathToLeafFromRoot(root , "" , 0 , 150,250);
+
+//        Node clone = createLeftCloneTree(root);
+////        display(clone);
+//
+//        Node normalize = transBackFromLeftClonedTree(clone);
+//        display(normalize);
+        
+//        printSingleChildNodes(root, null);
+
+//        Node removeLeaves = removeLeaves(root);
+//        display(removeLeaves);
+
+
+//        System.out.println(diameter1(root)); //N^2
+
+//        DiamHt info = diameterOP(root); // N
+//        System.out.println(info.diam);
+
+//        tilt(root);
+//        System.out.println(tilt);
+
+        BSTPair BSTpair = isBST(root);
+        System.out.println(BSTpair.isBST);
+
 
         }
     }

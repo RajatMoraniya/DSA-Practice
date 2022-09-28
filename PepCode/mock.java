@@ -1,4 +1,4 @@
-package Newton;
+package PepCode;
 
 public class mock {
     public static void main(String[] args) {
