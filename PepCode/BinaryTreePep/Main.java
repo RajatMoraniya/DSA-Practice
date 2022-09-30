@@ -425,6 +425,89 @@ public class Main {
         return myPair;
     }
 
+    public static class PairforLargestBSTsubtree{
+        int max;
+        int min;
+        boolean isBST;
+        Node root;
+        int size;
+    }
+    public static PairforLargestBSTsubtree LargestBSTsubtree(Node node){
+        if(node == null){
+            PairforLargestBSTsubtree n = new PairforLargestBSTsubtree();
+            n.max = Integer.MIN_VALUE;
+            n.min = Integer.MAX_VALUE;
+            n.isBST = true;
+            n.root = null;
+            n.size = 0;
+
+            return n;
+        }
+
+        PairforLargestBSTsubtree lp = LargestBSTsubtree(node.left);
+        PairforLargestBSTsubtree rp = LargestBSTsubtree(node.right);
+
+        PairforLargestBSTsubtree myPair = new PairforLargestBSTsubtree();
+        myPair.max = Math.max(node.data,Math.max(lp.max,rp.max));
+        myPair.min = Math.min(node.data,Math.min(lp.min,rp.min));
+        myPair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data <= rp.min;
+
+        if(myPair.isBST){
+            myPair.root = node;
+            myPair.size = lp.size+rp.size+1;
+        }
+        else if(lp.size>=rp.size){
+            myPair.root = lp.root;
+            myPair.size = lp.size;
+        }
+        else{
+            myPair.root = rp.root;
+            myPair.size = rp.size;
+        }
+
+        return myPair;
+    }
+
+
+    static boolean isBalanced = true;
+    public static int isBalanced(Node node){ // returns height and change in boolean isBalanced;
+      if(node==null){
+          return 0;
+      }
+        int lh  = isBalanced(node.left);
+        int rh = isBalanced(node.right);
+
+        if(Math.abs(lh-rh)>1){
+            isBalanced = false;
+        }
+
+        return lh+rh+1;
+    }
+
+    public static class BalancePair{
+        int ht;
+        boolean isBal;
+    }
+    public static BalancePair isBalancedbyPair(Node node){
+        if(node == null){
+            BalancePair n = new BalancePair();
+            n.ht = 0;
+            n.isBal = true;
+            return n;
+        }
+        BalancePair lp = isBalancedbyPair(node.left);
+        BalancePair rp = isBalancedbyPair(node.right);
+
+        BalancePair myPair = new BalancePair();
+        myPair.isBal = Math.abs(lp.ht-rp.ht) <= 1 && lp.isBal && rp.isBal;
+        myPair.ht = Math.max(lp.ht,rp.ht)+1;
+
+        return myPair;
+    }
+
+
+
+
 
     public static void main (String[]args) throws IOException {
             Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -505,8 +588,17 @@ public class Main {
 //        tilt(root);
 //        System.out.println(tilt);
 
-        BSTPair BSTpair = isBST(root);
-        System.out.println(BSTpair.isBST);
+//        BSTPair BSTpair = isBST(root);
+//        System.out.println(BSTpair.isBST);
+
+//        PairforLargestBSTsubtree LargestBSTsubtree =  LargestBSTsubtree(root);
+//        System.out.println(LargestBSTsubtree.root.data + "@" + LargestBSTsubtree.size);
+
+//        isBalanced(root);
+//        System.out.println(isBalanced);
+
+        BalancePair isBalancedbyPair = isBalancedbyPair(root);
+        System.out.println(isBalancedbyPair.isBal);
 
 
         }
