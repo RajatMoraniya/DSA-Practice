@@ -399,75 +399,6 @@ public class Main {
         return ls+rs+node.data;
     }
 
-    public static class BSTPair{
-        int max;
-        int min;
-        boolean isBST;
-    }
-    public static BSTPair isBST(Node node){
-        if(node == null){
-            BSTPair n = new BSTPair();
-            n.max = Integer.MIN_VALUE;
-            n.min = Integer.MAX_VALUE;
-            n.isBST = true;
-            return n;
-        }
-
-        BSTPair lp = isBST(node.left);
-        BSTPair rp = isBST(node.right);
-
-        BSTPair myPair = new BSTPair();
-
-        myPair.max = Math.max(node.data,Math.max(lp.max, rp.max));
-        myPair.min = Math.min(node.data,Math.min(lp.min, rp.min));
-        myPair.isBST = lp.isBST && rp.isBST && node.data>=lp.max && node.data<=rp.min;
-
-        return myPair;
-    }
-
-    public static class PairforLargestBSTsubtree{
-        int max;
-        int min;
-        boolean isBST;
-        Node root;
-        int size;
-    }
-    public static PairforLargestBSTsubtree LargestBSTsubtree(Node node){
-        if(node == null){
-            PairforLargestBSTsubtree n = new PairforLargestBSTsubtree();
-            n.max = Integer.MIN_VALUE;
-            n.min = Integer.MAX_VALUE;
-            n.isBST = true;
-            n.root = null;
-            n.size = 0;
-
-            return n;
-        }
-
-        PairforLargestBSTsubtree lp = LargestBSTsubtree(node.left);
-        PairforLargestBSTsubtree rp = LargestBSTsubtree(node.right);
-
-        PairforLargestBSTsubtree myPair = new PairforLargestBSTsubtree();
-        myPair.max = Math.max(node.data,Math.max(lp.max,rp.max));
-        myPair.min = Math.min(node.data,Math.min(lp.min,rp.min));
-        myPair.isBST = lp.isBST && rp.isBST && node.data >= lp.max && node.data <= rp.min;
-
-        if(myPair.isBST){
-            myPair.root = node;
-            myPair.size = lp.size+rp.size+1;
-        }
-        else if(lp.size>=rp.size){
-            myPair.root = lp.root;
-            myPair.size = lp.size;
-        }
-        else{
-            myPair.root = rp.root;
-            myPair.size = rp.size;
-        }
-
-        return myPair;
-    }
-
 
     static boolean isBalanced = true;
     public static int isBalanced(Node node){ // returns height and change in boolean isBalanced;
@@ -588,11 +519,6 @@ public class Main {
 //        tilt(root);
 //        System.out.println(tilt);
 
-//        BSTPair BSTpair = isBST(root);
-//        System.out.println(BSTpair.isBST);
-
-//        PairforLargestBSTsubtree LargestBSTsubtree =  LargestBSTsubtree(root);
-//        System.out.println(LargestBSTsubtree.root.data + "@" + LargestBSTsubtree.size);
 
 //        isBalanced(root);
 //        System.out.println(isBalanced);
