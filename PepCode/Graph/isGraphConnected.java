@@ -15,6 +15,15 @@ public class isGraphConnected {
         }
     }
 
+    public static void drawTreeAndGenerateComps(ArrayList<Edge>[] graph , int src, boolean[] visited, ArrayList<Integer> comp){
+        comp.add(src);
+        visited[src] = true;
+        for(Edge e : graph[src]){
+            if(visited[e.nbr]==false){
+                drawTreeAndGenerateComps(graph,e.nbr,visited,comp);
+            }
+        }
+    }
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -35,6 +44,26 @@ public class isGraphConnected {
         }
 
         // write your code here
+        /*
+7
+5
+0 1 10
+2 3 10
+4 5 10
+5 6 10
+4 6 10
+ */
+
+        boolean[] visited = new boolean[vtces];
+        ArrayList<ArrayList<Integer>> comps = new ArrayList<>();
+        for (int v = 0; v < vtces; v++) {
+            if (visited[v] == false) {
+                ArrayList<Integer> comp = new ArrayList<>();
+                drawTreeAndGenerateComps(graph, v, visited, comp);
+                comps.add(comp);
+            }
+        }
+        System.out.println(comps.size()==1);
     }
 }
 
