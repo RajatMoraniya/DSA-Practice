@@ -8,7 +8,9 @@ public class PrintZigzag {
         int n = sc.nextInt();
         pzz(n);
     }
-
+/*
+3
+ */
     public static void pzz(int n){
         if(n==0){
             return;

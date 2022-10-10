@@ -1,4 +1,4 @@
-package PepCode.Graph;
+package PepCode.RecursionAndBacktracking;
 
 import java.util.Scanner;
 
@@ -13,6 +13,10 @@ public class displayAnArray {
 
         displayArr(arr , 0);
     }
+    /*
+    3
+    10 20 30
+     */
 
     public static void displayArr(int[] arr, int idx){
 

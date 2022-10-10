@@ -11,6 +11,10 @@ public class Tower_Of_Hanoi {
         int t3d = sc.nextInt();
         toh(n,t1d,t2d,t3d);
     }
+    /*
+    3
+    10 11 12
+     */
 
     public static void toh(int n, int t1id, int t2id , int t3id){
         // [1 2 3]  []  []
